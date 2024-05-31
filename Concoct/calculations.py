@@ -10,25 +10,25 @@ import magicnumbers
 
 # check for out of range? Less than 8 or more than 25?
 def calculate_DC_Cost(DoseDC):
-    return magicnumbers.DifficultyClass.DCBASE**(DoseDC - magicnumbers.Basics.DCMIN)
+    return magicnumbers.DifficultyClass.DCBASE ** (DoseDC - magicnumbers.Basics.DCMIN)
 
 def calculate_Damage(averageDamage):
-    return magicnumbers.DifficultyClass.DAMAGEBASE**averageDamage
+    return magicnumbers.DifficultyClass.DAMAGEBASE ** averageDamage
 
 def calculate_HP_Reduction(HPReduction):
-    return magicnumbers.DifficultyClass.HPREDUCTIONBASE**HPReduction
+    return magicnumbers.DifficultyClass.HPREDUCTIONBASE ** HPReduction
 
 def calculate_Sleep(HPAffected):
-    return magicnumbers.Motion.UNCONSCIOUSBASE**HPAffected
+    return magicnumbers.Motion.UNCONSCIOUSBASE ** HPAffected
 
 def calculate_Movement_Reduction(MoveReduction, MovementPerSquare):
-    return magicnumbers.Motion.MOVESPEEDBASE**(MoveReduction / MovementPerSquare)
+    return magicnumbers.Motion.MOVESPEEDBASE ** (MoveReduction / MovementPerSquare)
 
 def calculate_Ranged_Concoction(Range, MovementPerSquare):
     return calculate_Movement_Reduction(Range, MovementPerSquare)
 
 def calculate_Multi_Attack_Reduction(NumberOfAttacksLost):
-    return magicnumbers.Motion.MULTIATTACKBASE**NumberOfAttacksLost
+    return magicnumbers.Motion.MULTIATTACKBASE ** NumberOfAttacksLost
 
 def calculate_Memory_Rounds(Duration):
     return magicnumbers.Mental.MEMORYLOSSBASE + math.log2(Duration)
@@ -88,7 +88,7 @@ def calculate_Periodic_Effect(AverageUpTime, AverageDownTime):
     return AverageUpTime / AverageDownTime
 
 def calculate_Punishing_Failures(DoseDC, NumberOfSaves):
-    return (1.6**NumberOfSaves) * (DoseDC / magicnumbers.DifficultyClass.DCMAX)
+    return (magicnumbers.ConcoctionOperations.PUNISHINGBASE**NumberOfSaves) * (DoseDC / magicnumbers.DifficultyClass.DCMAX)
 
 def calculate_Joint_Conditions(FirstConditionMultiplier, SecondConditionMultiplier):
     return FirstConditionMultiplier*SecondConditionMultiplier
@@ -109,7 +109,7 @@ def calculate_Exhaustion_5E(Stages):
 
     result = 1
 
-    if( 1 <= Stages):
+    if(1 <= Stages):
         result *= magicnumbers.DisadvantageOnChecks.ALLCHECKS
 
     if(2 <= Stages):
@@ -129,6 +129,29 @@ def calculate_Exhaustion_5E(Stages):
         result *= 2 
     
     return result
+
+# This is currently the exponential method.
+# The factorial method scales more drastically towards the tail end, assuming
+# Later stages are more impactful. Factorial method: 15^x/((14!)/(14-x)!)
+def calculate_Exhaustion_1DD(Stages):
+    return magicnumbers.Degrade.EXHAUSTION1DDBASE ** Stages  
+
+def calculate_Common_Save(NumberOfDecrements):
+    return magicnumbers.AbilityScores.COMMONSAVE * NumberOfDecrements
+
+def calculate_Uncommon_Save(NumberOfDecremenets):
+    return magicnumbers.AbilityScores.UNCOMMONSAVE * NumberOfDecremenets
+
+# I believe this calculation would work for increases to AC as well.
+def calculate_Armor_Class(NumberOfDecrements):
+
+    result = 1
+    for i in range(1,NumberOfDecrements + 1):
+        result += 4/(1+i)
+
+    return result
+
+
 
 def calculate_Basics(Specifications["basics"], Multiplier):
     #TODO

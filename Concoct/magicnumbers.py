@@ -112,6 +112,7 @@ class Degrade(Enum):
     POISONED = 4.5 # Also alcohol or sickened
     PRONE = 5
     SUFFOCATING = 75
+    EXHAUSTION1DDBASE = 1.65
     #TODO
 
 class Time(Enum):
@@ -154,3 +155,13 @@ class ConcoctionOperations(Enum):
     DELAYBASE = 0.99
     CRITFAILEFFECT = 1.15
     PUNISHINGBASE = 1.6 # The effect worsens for failing additional saves
+
+class AbilityScores(Enum):
+    COMMONSAVE = 7.5
+    DEXTERITYSAVE = 7.5
+    CONSTITUTIONSAVE = 7.5
+    WISDOMSAVE = 7.5
+    UNCOMMONSAVE = 5
+    STRENGTHSAVE = 5
+    INTELLIGENCESAVE = 5
+    CHARISMASAVE = 5
