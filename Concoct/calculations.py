@@ -151,7 +151,14 @@ def calculate_Armor_Class(NumberOfDecrements):
 
     return result
 
-
+# It might be worthwhile to pull the exponent math on this one out to its own function
+# as it shows up more than once. Basically, it describes the range that DoseDC can be as
+# a decimal value between 0 and 1. For your DoseDC to be impactful, even at its minimum, we
+# have to start at 1. (Hence DCMIN - 1) So, the range becomes DCMAX - (DCMIN -1) where, if
+# your DoseDC == DCMAX, the exponent becomes one and your BASE value is fully realized.
+def calculate_Contagion(DoseDC):
+    return magicnumbers.Degrade.CONTAGIOUSBASE ** ((DoseDC - (magicnumbers.DifficultyClass.DCMIN - 1)) /
+                                                    (magicnumbers.DifficultyClass.DCMAX - (magicnumbers.DifficultyClass.DCMIN - 1)))
 
 def calculate_Basics(Specifications["basics"], Multiplier):
     #TODO

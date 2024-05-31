@@ -76,8 +76,31 @@ class DisadvantageOnAttacks(Enum):
     SPELLATTACKS = 1.4
     #TODO
 
+# Attempted to weight combat, exploration, and roleplay equally.
+# Attempt failed.
 class DisadvantageOnChecks(Enum):
     ALLCHECKS = 1.75
+    COMMONCHECKS = 1.33 # Perception, Persuasion, Stealth
+    UNCOMMONCHECKS = 1.34 # Insight, Investigation, Deception, Athletics, Acrobatics, Sleight of Hand
+    RARECHECKS = 1.2 # And the rest
+    PERCEPTIONCHECK = 1.1
+    PERSUASIONCHECK = 1.1
+    STEALTHCHECK = 1.1
+    INSIGHTCHECK = 1.05
+    INVESTIGATIONCHECK = 1.05
+    DECEPTIONCHECK = 1.05
+    ATHLETICSCHECK = 1.05
+    ACROBATICSCHECK = 1.05
+    SLEIGHTOFHANDCHECK = 1.05
+    NATURECHECK = 1.02
+    HISTORYCHECK = 1.02
+    ARCANACHECK = 1.02
+    RELIGIONCHECK = 1.02
+    INTIMIDATIONCHECK = 1.02
+    MEDICINECHECK = 1.02
+    ANIMALHANDLINGCHECK = 1.02
+    SURVIVALCHECK = 1.02
+    PERFORMANCECHECK = 1.02
     #TODO
 
 class Motion(Enum):
@@ -113,6 +136,12 @@ class Degrade(Enum):
     PRONE = 5
     SUFFOCATING = 75
     EXHAUSTION1DDBASE = 1.65
+    DROPITEM = 1.25
+    DEATH = 150
+    UNDEATH = 160
+    DISINTEGRATE = 175
+    SOULRIP = 200
+    CONTAGIOUSBASE = 10
     #TODO
 
 class Time(Enum):
