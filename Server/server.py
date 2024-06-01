@@ -12,6 +12,10 @@ class HTTPHandler(SimpleHTTPRequestHandler):
         relpath = os.path.relpath(path, os.getcwd())
         fullpath = os.path.join(self.server.base_path, relpath)
         return fullpath
+    def do_GET(self):
+        if self.path == '/':
+            self.path = '/display.html'
+        return SimpleHTTPRequestHandler.do_GET(self)
 
 
 class HTTPServer(BaseHTTPServer):
@@ -22,6 +26,9 @@ class HTTPServer(BaseHTTPServer):
         BaseHTTPServer.__init__(self, server_address, RequestHandlerClass)
 
 
-web_dir = os.path.join(os.path.dirname(__file__), 'my_dir')
+web_dir = os.path.join(os.path.dirname(__file__))
+print(__file__)
 httpd = HTTPServer(web_dir, ("", 8000))
 httpd.serve_forever()
+
+# accept json object and confirm it got it
