@@ -4,9 +4,33 @@
     Hello World!
 </h1>
 <input type="text" id="dummy" />
-<button type="button" id="submit">Submit</button>
+<button type="button" id="submit">Submit</button><br>
 <!-- dummy field for data that goes into json -->
 <!-- button -->
+<input type="text" contenteditable="true" placeholder="Average Damage"><br>
+<label for="Damage Type">Type:</label><br>
+
+<select name="DamageType" id="damage type">
+  <option value="Cold">Cold</option>
+  <option value="Fire">Fire</option>
+  <option value="Necrotic">Necrotic</option>
+  <option value="Piercing">Piercing</option>
+  <option value="Psychic">Psychic</option>
+  <option value="Pure">Pure</option>
+  <option value="Magical">Magical</option>
+  <option value="Bludgeoning">Bludgeoning</option>
+
+</select><br>
+<input type="text" contenteditable="true" placeholder="Difficulty Class"><br>
+<input type="text" contenteditable="true" placeholder="Save"><br>
+<label for="application">Method:</label>
+
+<select name="Application" id="application">
+  <option value="Contact">Contact</option>
+  <option value="Ingestion">Ingestion</option>
+  <option value="Inhalation">Inhalation</option>
+  <option value="Injection">Injection</option>
+</select>
 <script src="display.js"></script>
 </body>
 </html>
