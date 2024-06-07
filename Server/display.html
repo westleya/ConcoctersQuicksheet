@@ -3,14 +3,16 @@
 <h1>
     Hello World!
 </h1>
-<input type="text" id="dummy" />
+<input type="text" id="base price" contenteditable="true" placeholder="Base Price"><br>
 <button type="button" id="submit">Submit</button><br>
 <!-- dummy field for data that goes into json -->
 <!-- button -->
+
 <input type="text" contenteditable="true" placeholder="Average Damage"><br>
-<label for="Damage Type">Type:</label><br>
+<label for="Damage Type">Damage Type:</label><br>
 
 <select name="DamageType" id="damage type">
+    <option value="">None</option>
     <option value="Bludgeoning">Bludgeoning</option>
     <option value="Cold">Cold</option>
     <option value="Fire">Fire</option>
@@ -22,7 +24,18 @@
 
 </select><br>
 <input type="text" contenteditable="true" placeholder="Difficulty Class"><br>
-<input type="text" contenteditable="true" placeholder="Save"><br>
+<label for="Save">Targeted Save:</label><br>
+
+<select name="TargetedSave" id="targeted save">
+    <option value="">None</option>
+    <option value="Strength">Strength</option>
+    <option value="Dexterity">Dexterity</option>
+    <option value="Constitution">Constitution</option>
+    <option value="Intelligence">Intelligence</option>
+    <option value="Wisdom">Wisdom</option>
+    <option value="Charisma">Charisma</option>
+
+</select><br>
 <label for="application">Method:</label>
 
 <select name="Application" id="application">

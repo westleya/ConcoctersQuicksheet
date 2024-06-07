@@ -6,6 +6,6 @@ function submitData()
     console.log(jsonobj.eleval)
 }
 
-let element = document.getElementById("dummy")
+let element = document.getElementById("base price")
 let button = document.getElementById("submit")
 button.addEventListener("click", submitData)
