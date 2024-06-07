@@ -1,49 +1,113 @@
 <html>
+
 <body>
-<h1>
-    Hello World!
-</h1>
-<input type="text" id="base price" contenteditable="true" placeholder="Base Price"><br>
-<button type="button" id="submit">Submit</button><br>
-<!-- dummy field for data that goes into json -->
-<!-- button -->
+    <h1>
+        Crafter's Quicksheet
+    </h1>
 
-<input type="text" contenteditable="true" placeholder="Average Damage"><br>
-<label for="Damage Type">Damage Type:</label><br>
+    <h3>Note: All fields are optional and should only be
+         filled in if they help describe the operation of the item (consumable 
+         or not) for which you are attempting to calculate the cost.</h3>
+    <table>
+        <tr>
+            <td>
+                <input type="text" id="base price" contenteditable="true" placeholder="Base Price"><br>
+                <input type="text" id="average damage" contenteditable="true" placeholder="Average Damage"><br>
+                <input type="text" id="difficulty class" contenteditable="true" placeholder="Difficulty Class"><br>
+                <input type="text" id="spell level" contenteditable="true" placeholder="Spell Level"><br>
+                <input type="text" id="number of uses" contenteditable="true" placeholder="Number of Uses"><br>
+            </td>
+            <td>
 
-<select name="DamageType" id="damage type">
-    <option value="">None</option>
-    <option value="Bludgeoning">Bludgeoning</option>
-    <option value="Cold">Cold</option>
-    <option value="Fire">Fire</option>
-    <option value="Magical">Magical</option>
-    <option value="Necrotic">Necrotic</option>
-    <option value="Piercing">Piercing</option>
-    <option value="Psychic">Psychic</option>
-    <option value="Pure">Pure</option>
+                <label for="damage type">Damage Type:</label><br>
+                <select name="DamageType" id="damage type">
+                    <option value="">None</option>
+                    <option value="Bludgeoning">Bludgeoning</option>
+                    <option value="Cold">Cold</option>
+                    <option value="Fire">Fire</option>
+                    <option value="Magical">Magical</option>
+                    <option value="Necrotic">Necrotic</option>
+                    <option value="Piercing">Piercing</option>
+                    <option value="Psychic">Psychic</option>
+                    <option value="Pure">Pure</option>
 
-</select><br>
-<input type="text" contenteditable="true" placeholder="Difficulty Class"><br>
-<label for="Save">Targeted Save:</label><br>
+                </select><br>
 
-<select name="TargetedSave" id="targeted save">
-    <option value="">None</option>
-    <option value="Strength">Strength</option>
-    <option value="Dexterity">Dexterity</option>
-    <option value="Constitution">Constitution</option>
-    <option value="Intelligence">Intelligence</option>
-    <option value="Wisdom">Wisdom</option>
-    <option value="Charisma">Charisma</option>
+                <label for="targeted save">Targeted Save:</label><br>
+                <select name="TargetedSave" id="targeted save">
+                    <option value="">None</option>
+                    <option value="Strength">Strength</option>
+                    <option value="Dexterity">Dexterity</option>
+                    <option value="Constitution">Constitution</option>
+                    <option value="Intelligence">Intelligence</option>
+                    <option value="Wisdom">Wisdom</option>
+                    <option value="Charisma">Charisma</option>
 
-</select><br>
-<label for="application">Method:</label>
+                </select><br>
 
-<select name="Application" id="application">
-  <option value="Contact">Contact</option>
-  <option value="Ingestion">Ingestion</option>
-  <option value="Inhalation">Inhalation</option>
-  <option value="Injection">Injection</option>
-</select>
-<script src="display.js"></script>
+                <label for="application">Method:</label><br>
+                <select name="Application" id="application">
+                    <option value="">None</option>
+                    <option value="Contact">Contact</option>
+                    <option value="Ingestion">Ingestion</option>
+                    <option value="Inhalation">Inhalation</option>
+                    <option value="Injection">Injection</option>
+                </select>
+
+            </select><br>
+
+            <!--change to attack penalty check box? then expand if checked to show type and or amount-->
+            <label for="attack penalty">Attack Penalty</label>
+            <input type="checkbox" id="attack penalty" text="Attack Penalty" onclick="validate()"> <br>
+            <label hidden for="attack type" id="attack type label">Attack Type:</label><br>
+            <select hidden name="Attack Type" id="attack type">
+                <option value="">None</option>
+                <option value="Melee">Melee</option>
+                <option value="Ranged">Ranged</option>
+                <option value="Spell">Spell</option>
+                <option value="All">All</option>
+            </select> <br>
+            <label hidden for="penalty amount" id="attack penalty label">Penalty Amount:</label><br>
+            <select hidden name="Penalty Amount" id="penalty amount">
+                <option value="">None</option>
+                <option value="Disadvantage">Disadvantage</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+            </td>
+            <td>
+                <button type="button" id="submit">Submit</button><br>
+                <label for="calculated cost">Estimated Cost:</label>
+                <div name="Cost" id="calculated cost">0</div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="display.js">
+        document.getElementById('calculated cost').innerHTML = result;
+    </script>
+
+    <script type = "text/javascript">
+        function validate() {
+            if (document.getElementById('attack penalty').checked){
+                
+                document.getElementById('attack type').hidden = false;
+                document.getElementById('penalty amount').hidden = false;
+                document.getElementById('attack type label').hidden = false;
+                document.getElementById('attack penalty label').hidden = false;
+            }
+            else {
+                document.getElementById('attack type').hidden = true;
+                document.getElementById('penalty amount').hidden = true;
+                document.getElementById('attack type label').hidden = true;
+                document.getElementById('attack penalty label').hidden = true;
+            }
+        }
+
+    </script>
 </body>
+
 </html>
