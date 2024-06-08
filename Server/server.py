@@ -16,6 +16,14 @@ class HTTPHandler(SimpleHTTPRequestHandler):
         if self.path == '/':
             self.path = '/display.html'
         return SimpleHTTPRequestHandler.do_GET(self)
+    def do_POST(self):
+        length = int(self.headers['Content-length'])
+        print("here")
+        print(self.path)
+        print(self.rfile.read(length))
+        self.send_response(200, "OK")
+        self.end_headers()
+        self.wfile.write("serverdata")
 
 
 class HTTPServer(BaseHTTPServer):
