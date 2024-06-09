@@ -2,6 +2,8 @@
 
 from http.server import HTTPServer as BaseHTTPServer, SimpleHTTPRequestHandler
 import os
+import json
+
 
 
 class HTTPHandler(SimpleHTTPRequestHandler):
@@ -38,5 +40,4 @@ web_dir = os.path.join(os.path.dirname(__file__))
 print(__file__)
 httpd = HTTPServer(web_dir, ("", 8000))
 httpd.serve_forever()
-
 # accept json object and confirm it got it
