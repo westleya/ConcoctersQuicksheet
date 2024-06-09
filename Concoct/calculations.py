@@ -137,10 +137,10 @@ def calculate_Exhaustion_1DD(Stages):
     return magicnumbers.Degrade.EXHAUSTION1DDBASE ** Stages  
 
 def calculate_Common_Save(NumberOfDecrements):
-    return magicnumbers.AbilityScores.COMMONSAVE * NumberOfDecrements
+    return magicnumbers.AbilityScores.COMMON * NumberOfDecrements
 
 def calculate_Uncommon_Save(NumberOfDecremenets):
-    return magicnumbers.AbilityScores.UNCOMMONSAVE * NumberOfDecremenets
+    return magicnumbers.AbilityScores.UNCOMMON * NumberOfDecremenets
 
 # I believe this calculation would work for increases to AC as well.
 def calculate_Armor_Class(NumberOfDecrements):

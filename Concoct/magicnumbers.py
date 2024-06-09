@@ -186,11 +186,11 @@ class ConcoctionOperations(Enum):
     PUNISHINGBASE = 1.6 # The effect worsens for failing additional saves
 
 class AbilityScores(Enum):
-    COMMONSAVE = 7.5
-    DEXTERITYSAVE = 7.5
-    CONSTITUTIONSAVE = 7.5
-    WISDOMSAVE = 7.5
-    UNCOMMONSAVE = 5
-    STRENGTHSAVE = 5
-    INTELLIGENCESAVE = 5
-    CHARISMASAVE = 5
+    COMMON = 7.5
+    DEXTERITY = 7.5
+    CONSTITUTION = 7.5
+    WISDOM = 7.5
+    UNCOMMON = 5
+    STRENGTH = 5
+    INTELLIGENCE = 5
+    CHARISMA = 5
