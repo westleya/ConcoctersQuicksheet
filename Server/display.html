@@ -79,6 +79,7 @@
 
             </td>
             <td>
+                <!--An onclick*() can be added to this-->
                 <button type="button" id="submit">Submit</button><br>
                 <label for="calculated cost">Estimated Cost:</label>
                 <div name="Cost" id="calculated cost">0</div>
@@ -93,7 +94,7 @@
     <script type = "text/javascript">
         function validate() {
             if (document.getElementById('attack penalty').checked){
-                
+
                 document.getElementById('attack type').hidden = false;
                 document.getElementById('penalty amount').hidden = false;
                 document.getElementById('attack type label').hidden = false;
