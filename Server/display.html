@@ -80,7 +80,7 @@
             </td>
             <td>
                 <!--An onclick*() can be added to this-->
-                <button type="button" id="submit">Submit</button><br>
+                <button onclick = "sendSpecifications()" type="button" id="submit">Submit</button><br>
                 <label for="calculated cost">Estimated Cost:</label>
                 <div name="Cost" id="calculated cost">0</div>
             </td>
@@ -108,6 +108,35 @@
             }
         }
 
+        function sendSpecifications() {
+            const dataToSend = JSON.stringify({"base price": document.getElementById("base price").innerHTML,
+                                                "average damage": document.getElementById("average damage").innerHTML});
+            let dataReceived = ""; 
+            fetch("", {
+                credentials: "same-origin",
+                mode: "same-origin",
+                method: "post",
+                headers: { "Content-Type": "application/json" },
+                body: dataToSend
+                })
+                .then(resp => {
+                    if (resp.status === 200) {
+                        return resp.json()
+                    } else {
+                        console.log("Status: " + resp.status)
+                        return Promise.reject("server")
+                    }
+                })
+                .then(dataJson => {
+                    dataReceived = JSON.parse(dataJson)
+                })
+                .catch(err => {
+                    if (err === "server") return
+                    console.log(err)
+                })
+
+            console.log(`Received: ${dataReceived}`)     
+        }
     </script>
 </body>
 
